@@ -96,7 +96,7 @@ public class XstreamDocumentTransportBuilder {
    *
    * @param contrib Converter to contribute.
    */
-  public void addConverter(XstreamObjectConverter<?> contrib) {
+  public void addConverter(XstreamObjectConverter contrib) {
     addAlias(contrib.getTag(), contrib.forType());
     addAllowedType(contrib.getAllowTypes());
     xstream.registerConverter(

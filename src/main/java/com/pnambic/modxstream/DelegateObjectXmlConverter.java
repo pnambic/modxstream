@@ -29,7 +29,7 @@ import com.thoughtworks.xstream.mapper.Mapper;
  */
 public class DelegateObjectXmlConverter implements Converter {
 
-  private final XstreamObjectConverter<?> delegate;
+  private final XstreamObjectConverter delegate;
 
   private final Mapper mapper;
 
@@ -40,7 +40,7 @@ public class DelegateObjectXmlConverter implements Converter {
    * @param mapper bunlded {@link Mapper}
    */
   public DelegateObjectXmlConverter(
-      XstreamObjectConverter<?> delegate, Mapper mapper) {
+      XstreamObjectConverter delegate, Mapper mapper) {
     this.delegate = delegate;
     this.mapper = mapper;
   }

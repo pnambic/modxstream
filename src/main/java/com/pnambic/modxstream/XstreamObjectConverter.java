@@ -17,10 +17,8 @@ package com.pnambic.modxstream;
 
 /**
  * Defines a converter for the parameterized type.
- *
- * @param <T> Type to convert
  */
-public interface XstreamObjectConverter<T> {
+public interface XstreamObjectConverter {
 
   /**
    * Indicate the primary type supported by this converter.
