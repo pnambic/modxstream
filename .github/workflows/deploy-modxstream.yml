@@ -1,0 +1,33 @@
+name: Build and Publish modxstream
+
+on:
+  push:
+    tags:
+    - 'releases/**'
+
+  workflow_dispatch:
+
+env:
+  JAVA_DISTRO: 'temurin'
+  JAVA_VERSION: '21'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@v4
+
+    - name: Setup Java Sdk ${{ env.JAVA_VERSION }}
+      uses: actions/setup-java@v4
+      with:
+        distribution: ${{ env.JAVA_DISTRO }}
+        java-version: ${{ env.JAVA_VERSION }}
+
+    - name: deploy to Maven Central
+      env:
+          MAVEN_USERNAME: ${{ secrets.CENTRAL_TOKEN }}
+          MAVEN_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
+          MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_KEY }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+      run: ./mvnw deploy
