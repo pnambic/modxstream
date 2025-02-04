@@ -23,6 +23,7 @@ jobs:
       with:
         distribution: ${{ env.JAVA_DISTRO }}
         java-version: ${{ env.JAVA_VERSION }}
+        gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
 
     - name: deploy to Maven Central
       env:
