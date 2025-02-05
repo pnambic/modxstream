@@ -23,13 +23,15 @@ jobs:
       with:
         distribution: ${{ env.JAVA_DISTRO }}
         java-version: ${{ env.JAVA_VERSION }}
+        server-username: MAVEN_USERNAME # env variable for token in deploy
+        server-password: MAVEN_PASSWORD # env variable for password in deploy
         gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+        gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for passphrase in deploy
 
-    - name: deploy to Maven Central
+    - name: Deploy to Maven Central
       env:
           MAVEN_USERNAME: ${{ secrets.CENTRAL_TOKEN }}
           MAVEN_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_KEY }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
       run: ./mvnw deploy
