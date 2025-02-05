@@ -23,6 +23,7 @@ jobs:
       with:
         distribution: ${{ env.JAVA_DISTRO }}
         java-version: ${{ env.JAVA_VERSION }}
+        server-id: central
         server-username: MAVEN_USERNAME # env variable for token in deploy
         server-password: MAVEN_PASSWORD # env variable for password in deploy
         gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
