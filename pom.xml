@@ -7,7 +7,7 @@
 
   <groupId>com.pnambic.modxstream</groupId>
   <artifactId>modxstream</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
 
   <name>modxstream</name>
