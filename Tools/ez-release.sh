@@ -32,11 +32,17 @@ function die {
 
 function main {
 
-  if [ $# -ne 2 ]; then
-    die "Release requires a label and a message"
+  if [ $# -eq 1 ]; then
+    releaseAndPush "${RELPATH}/${1}" "Release ${1}"
+    exit 0
   fi
 
-  releaseAndPush "${RELPATH}/${1}" "${2}"
+  if [ $# -ne 2 ]; then
+    releaseAndPush "${RELPATH}/${1}" "${2}"
+    exit 0
+  fi
+
+  die "Release requires a label and a message"
 }
 
 main "$@"
